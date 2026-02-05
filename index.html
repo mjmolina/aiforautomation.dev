@@ -1,1 +1,758 @@
-AI for Automation
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Maria Jose Molina-Contreras - Creative Data Scientist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #ffffff;
+            --text: #0a0a0a;
+            --text-secondary: #6b6b6b;
+            --accent: #00ff88;
+            --accent-dark: #00cc6a;
+            --border: #e0e0e0;
+            --card-bg: #fafafa;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0a0a0a;
+            --text: #ffffff;
+            --text-secondary: #a0a0a0;
+            --accent: #00ff88;
+            --accent-dark: #00cc6a;
+            --border: #2a2a2a;
+            --card-bg: #141414;
+        }
+
+        body {
+            font-family: 'Archivo', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            transition: background 0.3s, color 0.3s;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text);
+            cursor: pointer;
+            padding: 0.4rem 0.6rem;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--text);
+        }
+
+        /* Banner */
+        .banner {
+            margin-top: 60px;
+            position: relative;
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+            background: var(--card-bg);
+        }
+
+        .banner-image {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            display: block;
+        }
+
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 3rem;
+        }
+
+        .banner-text {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            color: #ffffff;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 8rem 2rem 4rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 800;
+            line-height: 0.95;
+            letter-spacing: -0.04em;
+            margin-bottom: 2rem;
+            animation: slideUp 0.8s ease 0.2s backwards;
+        }
+
+        .hero-description {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 3rem;
+            font-weight: 400;
+            line-height: 1.6;
+            animation: slideUp 0.8s ease 0.4s backwards;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            animation: slideUp 0.8s ease 0.6s backwards;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #0a0a0a;
+            border: 2px solid var(--accent);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-dark);
+            border-color: var(--accent-dark);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text);
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+            padding: 3rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Section */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .section-header {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .section-heading {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+        }
+
+        /* Work Grid */
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 0;
+            border: 1px solid var(--border);
+        }
+
+        .work-item {
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .work-image {
+            width: 100%;
+            height: 240px;
+            overflow: hidden;
+            background: var(--card-bg);
+        }
+
+        .work-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .work-item:hover .work-image img {
+            transform: scale(1.05);
+        }
+
+        .work-content {
+            padding: 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .work-item:hover {
+            background: var(--card-bg);
+        }
+
+        .work-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: var(--accent);
+            transition: left 0.3s;
+        }
+
+        .work-item:hover::before {
+            left: 0;
+        }
+
+        .work-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .work-category {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .work-description {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+
+        .work-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            padding: 0.3rem 0.6rem;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            background: var(--card-bg);
+            border-color: var(--text);
+        }
+
+        .service-icon {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: block;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+        }
+
+        .service-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .service-description {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Contact */
+        .contact-content {
+            max-width: 600px;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border: 1px solid var(--border);
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.2s;
+        }
+
+        .contact-method:hover {
+            background: var(--card-bg);
+            border-color: var(--text);
+        }
+
+        .contact-icon {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .contact-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .contact-value {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Animations */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .banner {
+                height: 250px;
+            }
+
+            .banner-overlay {
+                padding: 2rem 1.5rem;
+            }
+
+            .banner-text {
+                font-size: 2rem;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            .hero {
+                padding: 6rem 1.5rem 3rem;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .work-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .work-item {
+                border-right: none;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo">Dr. Maria Jose Molina-Contreras</a>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#work">Work</a></li>
+                    <li><a href="#About me">About me</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="theme-toggle" onclick="toggleTheme()">◐</button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="banner">
+        <img src="src/1.jpg" alt="Banner" class="banner-image">
+    </section>
+
+    <main>
+
+        <section id="work">
+            <div class="section-header">
+                <h3 class="section-heading">Recent Projects That Drive Impact</h3>
+            </div>
+
+                <div class="work-item">
+                    <div class="work-image">
+                        <img src="src/2.jpg" alt="E-Commerce Platform">
+                    </div>
+                    <div class="work-content">
+                        <h3 class="work-title">Yield Forecasting predictions</h3>
+                        <div class="work-category"></div>
+                        <p class="work-description">
+                        AI-driven Yield Forecasting: Designed and implemented an experimental forecasting models system to predict fruits yield.
+                        </p>
+                        <div class="work-tags">
+                            <span class="tag">Deep Learning</span>
+                            <span class="tag">xAI</span>
+                            <span class="tag">Pytorch</span>
+                            <span class="tag">Python</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="work-item">
+                    <div class="work-image">
+                        <img src="src/6.png" alt="Resources optimizations">
+                    </div>
+                    <div class="work-content">
+                        <h3 class="work-title">Plants Resources Optimizations</h3>
+                        <div class="work-category"></div>
+                        <p class="work-description">
+                        Implemented a full  pipeline from problem scoping to models deployment to optimize light and plants irrigation to have healthy plants
+                        while reducing resources consumption.
+                        </p>
+                        <div class="work-tags">
+                            <span class="tag">IOT</span>
+                            <span class="tag">Deep Learning</span>
+                            <span class="tag">Pytorch</span>
+                            <span class="tag">Mathematical modelling</span>
+                            <span class="tag">Python</span>
+    
+                        </div>
+                    </div>
+                </div>
+
+                <div class="work-item">
+                    <div class="work-image">
+                        <img src="src/3.jpg" alt="Anomaly detection">
+                    </div>
+                    <div class="work-content">
+                        <h3 class="work-title">Anomaly detection for irrigation systems</h3>
+                        <div class="work-category"></div>
+                        <p class="work-description">
+                            End-to-end product Anomaly detection system:
+                            Delivered a pipeline with unsupervised and supervised Deep Learning approach to detect Hardware anomalies in Irrigation Stations.
+                        </p>
+                        <div class="work-tags">
+                            <span class="tag">IOT</span>
+                            <span class="tag">Predictive Modeling</span>
+                            <span class="tag">Deep Learning</span>
+                            <span class="tag">Pytorch</span>
+                            <span class="tag">Mathematical modelling</span>
+                            <span class="tag">Python</span>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="work-item">
+                    <div class="work-image">
+                        <img src="src/4.jpg" alt="Pathogen detection">
+                    </div>
+                    <div class="work-content">
+                        <h3 class="work-title">Pathogens Detection</h3>
+                        <div class="work-category"></div>
+                        <p class="work-description">
+                        Implemented a end-to-end pipeline for plant's health detection in leaves.
+                        </p>
+                        <div class="work-tags">
+                            <span class="tag">Computer Vision</span>
+                            <span class="tag">OpenCV</span>
+                            <span class="tag">Deep Learning</span>
+                            <span class="tag">Python</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="work-item">
+                    <div class="work-image">
+                        <img src="src/5.jpg" alt="Agents and LLMs in Sustainability field">
+                    </div>
+                    <div class="work-content">
+                        <h3 class="work-title">Agents, SLM and LLMs</h3>
+                        <div class="work-category">GenAI and NLP</div>
+                        <p class="work-description">
+                        Fine-tuning pre-trained Open Source LLMs for specialised knowledge to ensure high relevance and accuracy in model responses.
+                        Designed an Agents system from academical publications to be applied to real business problem
+                        </p>
+                        <div class="work-tags">
+                            <span class="tag">Langchain</span>
+                            <span class="tag">Langflow</span>
+                            <span class="tag">GenAI</span>
+                            <span class="tag">NLP</span>
+                            <span class="tag">Neo4J</span>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <section id="contact">
+            <div class="section-header">
+                <div class="section-title">Get In Touch</div>
+                <h2 class="section-heading">Let's Build Something Great</h2>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-methods">
+                        <a href="mailto:hello@yourname.com" class="contact-method">
+                            <span class="contact-icon">@</span>
+                            <div>
+                                <div class="contact-label">Email</div>
+                                <div class="contact-value">mjmolina@pm.me</div>
+                            </div>
+                        </a>
+
+                        <a href="https://linkedin.com" class="contact-method" target="_blank">
+                            <span class="contact-icon">in</span>
+                            <div>
+                                <div class="contact-label">LinkedIn</div>
+                                <div class="contact-value">https://www.linkedin.com/in/mjmolinacontreras/</div>
+                            </div>
+                        </a>
+
+                        <a href="https://github.com" class="contact-method" target="_blank">
+                            <span class="contact-icon">gh</span>
+                            <div>
+                                <div class="contact-label">GitHub</div>
+                                <div class="contact-value">@mjmolina</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 All right reserved</p>
+    </footer>
+
+    <script>
+        // Theme toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const current = html.getAttribute('data-theme');
+            const newTheme = current === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Load saved theme
+        window.addEventListener('DOMContentLoaded', () => {
+            const saved = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', saved);
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
