@@ -3,13 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About — Your Name</title>
+    <title>About — Dr. Maria Jose Molina-Contreras</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .about-links {
+            display: flex;
+            gap: 2.5rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        .about-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: inherit;
+        }
+        .about-link svg {
+            width: 28px;
+            height: 28px;
+        }
+        .about-link span {
+            font-size: 0.85rem;
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav>
-            <a href="index.html" class="logo">lala</a>
+            <a href="index.html" class="logo">Dr. Maria Jose Molina-Contreras</a>
             <div class="nav-right">
                 <ul class="nav-links">
                     <li><a href="index.html#work">Work</a></li>
@@ -21,44 +47,48 @@
         </nav>
     </header>
 
-    <main>
-        <section id="about">
-            <div class="section-header">
-                <div class="section-title">About me</div>
-                <h2 class="section-heading">From Molecular Biology to Machine Learning</h2>
-            </div>
+    <section id="about">
+        <div class="section-header">
+            <div class="section-title">About me</div>
+            <h2 class="section-heading">From Molecular Biology to Machine Learning</h2>
+        </div>
 
-            <p>I am a Sr. Data Scientist with a PhD in molecular biology and
-            eight years applying machine learning in industry in classical NLP,
-            deep learning for vision and time series, and more recently LLM
-            agents and retrieval systems in production.</p>
+        <p>I am a Senior Data Scientist with a PhD Biotech and eight
+        years applying machine learning in industry: classical NLP, deep learning
+        for vision and time series, and more recently LLM agents and retrieval
+        systems in production.</p>
 
-            <p>My doctoral work integrated transcriptomic, proteomic, genomic
-            and physiological data to study plant proximity responses. The move
-            into data science was less of a jump than it sounds: the constant
-            has been working with messy scientific data and asking whether a
-            result actually holds.</p>
+        <p>My doctoral work integrated transcriptomic, proteomic, genomic and
+        physiological data to study plant proximity responses. The move into data
+        science was less of a jump than it sounds: the constant has been working
+        with messy scientific data and asking whether a result actually holds.</p>
 
-            <p>Since 2018 I have led projects end to end — scoping, hiring,
-            modelling, deployment across scientific e-commerce, vertical
-            farming and agritech. In 2023 I built an agent system that generated
-            graph queries for researchers without a technical background, at a
-            point when the tooling and patterns for doing this were still
-            emerging.</p>
+        <p>Since 2018 I have led projects end to end: scoping, hiring, modelling
+        and deployment, across different industries.</p>
 
-            <p>I am currently working on two things: independent research on
-            LLM agent reliability and evaluation, and an applied project on
-            molecular detection in the food chain.</p>
 
-            <p></p>
-
-            <div class="about-links">
-                <a href="src/resume2026_mariajose_molinacontreras.pdf">Download CV (PDF)</a>
-                <a href="https://github.com/YOUR_USERNAME">GitHub</a>
-                <a href="https://linkedin.com/in/mjmolinacontreras">LinkedIn</a>
-            </div>
-        </section>
-    </main>
+        <div class="about-links">
+            <a class="about-link" href="src/resume2026_mariajose_molinacontreras.pdf">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <path d="M14 2v6h6"/><path d="M12 18v-6"/><path d="M9 15l3 3 3-3"/>
+                </svg>
+                <span>CV (PDF)</span>
+            </a>
+            <a class="about-link" href="https://www.linkedin.com/in/mjmolinacontreras/">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 17V10.3H6.11V17h2.23zM7.22 9.36a1.29 1.29 0 1 0 0-2.58 1.29 1.29 0 0 0 0 2.58zM17.9 17v-3.67c0-1.94-1.04-2.85-2.42-2.85a2.1 2.1 0 0 0-1.9 1.05V10.3h-2.23c.03.63 0 6.7 0 6.7h2.23v-3.74c0-.2.01-.4.07-.54.17-.4.53-.81 1.16-.81.82 0 1.15.62 1.15 1.53V17h2.23z"/>
+                </svg>
+                <span>LinkedIn</span>
+            </a>
+            <a class="about-link" href="https://github.com/mjmolina">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.18.58.69.48A10 10 0 0 0 22 12c0-5.52-4.48-10-10-10z"/>
+                </svg>
+                <span>GitHub</span>
+            </a>
+        </div>
+    </section>
 
     <script src="script.js"></script>
 </body>
