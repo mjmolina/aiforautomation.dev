@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — Your Name</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">lala</a>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="index.html#work">Work</a></li>
+                    <li><a href="about.html" class="active">About me</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <button class="theme-toggle" onclick="toggleTheme()">◐</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about">
+            <div class="section-header">
+                <div class="section-title">About me</div>
+                <h2 class="section-heading">From Molecular Biology to Machine Learning</h2>
+            </div>
+
+            <p>I am a data scientist with a PhD in plant molecular biology and
+            eight years applying machine learning in industry — classical NLP,
+            deep learning for vision and time series, and more recently LLM
+            agents and retrieval systems in production.</p>
+
+            <p>My doctoral work integrated transcriptomic, proteomic, genomic
+            and physiological data to study plant proximity responses. The move
+            into data science was less of a jump than it sounds: the constant
+            has been working with messy scientific data and asking whether a
+            result actually holds.</p>
+
+            <p>Since 2018 I have led projects end to end — scoping, hiring,
+            modelling, deployment — across scientific e-commerce, vertical
+            farming and agritech. In 2023 I built an agent system that generated
+            graph queries for researchers without a technical background, at a
+            point when the tooling and patterns for doing this were still
+            emerging.</p>
+
+            <p>I am currently working on two things: independent research on
+            LLM agent reliability and evaluation, and an applied project on
+            molecular detection in the food chain.</p>
+
+            <p>What interests me most is that generating results has become
+            inexpensive while validating them has not. That gap is where I
+            want to work.</p>
+
+            <div class="about-links">
+                <a href="src/resume2026_mariajose_molinacontreras.pdf">Download CV (PDF)</a>
+                <a href="https://linkedin.com/in/mjmolinacontreras">LinkedIn</a>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
