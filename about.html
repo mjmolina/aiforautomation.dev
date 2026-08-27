@@ -1,70 +1,221 @@
+About · HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About — Dr. Maria Jose Molina-Contreras</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        /* PASTE YOUR INDEX.HTML STYLE BLOCK HERE */
-
-        .about-content { display: flex; gap: 3rem; align-items: flex-start; margin-top: 2rem; }
-        .about-side { flex-shrink: 0; width: 220px; text-align: center; }
-        .about-photo { width: 100%; border-radius: 8px; display: block; }
-        .about-socials { display: flex; justify-content: center; gap: 1.25rem; margin: 1.25rem 0; }
-        .about-socials a { text-decoration: none; color: inherit; font-size: 0.9rem; }
-        .cv-button { display: inline-block; padding: 0.6rem 1.4rem; border: 1px solid currentColor; border-radius: 6px; text-decoration: none; font-size: 0.9rem; color: inherit; }
-        .about-text p { margin-bottom: 1.2rem; line-height: 1.7; }
-        @media (max-width: 700px) {
-            .about-content { flex-direction: column; gap: 2rem; }
-            .about-side { width: 100%; max-width: 200px; margin: 0 auto; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Maria Jose Molina-Contreras</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #14141a;
+    --muted: #6b6b76;
+    --line: #e4e4e9;
+    --accent: #2f6f4f;
+  }
+  [data-theme="dark"] {
+    --bg: #14141a;
+    --fg: #f0f0f2;
+    --muted: #9a9aa5;
+    --line: #2c2c36;
+    --accent: #7fc4a0;
+  }
+ 
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Archivo', system-ui, sans-serif;
+    line-height: 1.6;
+    transition: background .2s, color .2s;
+  }
+ 
+  /* ---------- nav ---------- */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1.75rem 2rem;
+  }
+  .logo {
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    color: var(--fg);
+  }
+  .nav-right { display: flex; align-items: center; gap: 2rem; }
+  .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: .9rem;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--fg); }
+  .theme-toggle {
+    background: none;
+    border: none;
+    color: var(--fg);
+    font-size: 1.15rem;
+    cursor: pointer;
+  }
+ 
+  /* ---------- hero ---------- */
+  .hero {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 4rem 2rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4rem;
+    align-items: center;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.1rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -.02em;
+    margin-bottom: 1.25rem;
+  }
+  .hero .role {
+    font-size: 1.15rem;
+    color: var(--muted);
+    margin-bottom: .25rem;
+  }
+  .hero .role strong { color: var(--fg); font-weight: 600; }
+ 
+  .photo {
+    width: 260px;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+  }
+ 
+  /* ---------- links row ---------- */
+  .links {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .links a {
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    padding: .65rem 1.25rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    text-decoration: none;
+    color: var(--fg);
+    font-size: .9rem;
+    transition: border-color .15s, color .15s;
+  }
+  .links a:hover { border-color: var(--accent); color: var(--accent); }
+  .links svg { width: 17px; height: 17px; }
+ 
+  /* ---------- prose ---------- */
+  .prose {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem 5rem;
+    border-top: 1px solid var(--line);
+  }
+  .prose h2 {
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    margin: 3rem 0 1.5rem;
+  }
+  .prose p {
+    max-width: 62ch;
+    margin-bottom: 1.25rem;
+    color: var(--fg);
+  }
+ 
+  @media (max-width: 760px) {
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      padding-top: 2.5rem;
+      text-align: left;
+    }
+    .photo { width: 180px; height: 180px; }
+    nav { padding: 1.25rem 1.5rem; }
+    .hero, .links, .prose { padding-left: 1.5rem; padding-right: 1.5rem; }
+  }
+</style>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="index.html" class="logo">Dr. Maria Jose Molina-Contreras</a>
-            <div class="nav-right">
-                <ul class="nav-links">
-                    <li><a href="index.html#work">Work</a></li>
-                    <li><a href="about.html" class="active">About me</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                </ul>
-                <button class="theme-toggle" onclick="toggleTheme()">◐</button>
-            </div>
-        </nav>
-    </header>
-
-    <section id="about">
-        <div class="section-header">
-            <div class="section-title">About me</div>
-            <h2 class="section-heading">From Molecular Biology to Machine Learning</h2>
-        </div>
-
-        <div class="about-content">
-            <aside class="about-side">
-                <img src="src/mj2026.jpg" alt="Maria Jose Molina-Contreras" class="about-photo">
-                <div class="about-socials">
-                    <a href="https://www.linkedin.com/in/mjmolinacontreras/">in LinkedIn</a>
-                    <a href="https://github.com/mjmolina">gh GitHub</a>
-                </div>
-                <a href="src/resume2026_mariajose_molinacontreras.pdf" class="cv-button">Download CV</a>
-            </aside>
-
-            <div class="about-text">
-                <p>I am a Senior Data Scientist with a PhD in Biotech and
-                eight years applying machine learning in industry: classical NLP,
-                deep learning for vision and time series, and LLM
-                agents and retrieval systems.</p>
-
-
-            </div>
-        </div>
-    </section>
-
-    <script src="script.js"></script>
+ 
+<nav>
+  <a href="index.html" class="logo">Maria Jose Molina-Contreras</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="about.html" class="active">About me</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" onclick="toggleTheme()">◐</button>
+  </div>
+</nav>
+ 
+<section class="hero">
+  <div>
+    <h1>Hello! My name is María José Molina Contreras</h1>
+    <p class="role"><strong> I am former Scientist</strong></p>
+    <p class="role">working in the Data Science world 🌱 🐍</p>
+  </div>
+  <img class="photo" src="src/mj2026.jpg" alt="Maria Jose Molina-Contreras">
+</section>
+ 
+<div class="links">
+  <a href="https://www.linkedin.com/in/mjmolinacontreras/">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 17V10.3H6.11V17h2.23zM7.22 9.36a1.29 1.29 0 1 0 0-2.58 1.29 1.29 0 0 0 0 2.58zM17.9 17v-3.67c0-1.94-1.04-2.85-2.42-2.85a2.1 2.1 0 0 0-1.9 1.05V10.3h-2.23c.03.63 0 6.7 0 6.7h2.23v-3.74c0-.2.01-.4.07-.54.17-.4.53-.81 1.16-.81.82 0 1.15.62 1.15 1.53V17h2.23z"/></svg>
+    LinkedIn
+  </a>
+  <a href="https://github.com/mjmolina">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.18.58.69.48A10 10 0 0 0 22 12c0-5.52-4.48-10-10-10z"/></svg>
+    GitHub
+  </a>
+  <a href="src/resume2026_mariajose_molinacontreras.pdf">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M12 12v6"/><path d="M9 15l3 3 3-3"/></svg>
+    CV (PDF)
+  </a>
+</div>
+ 
+<div class="prose">
+  <h2>Background</h2>
+  <p>I am a Senior Data Scientist with a PhD in Biotech and eight years
+  applying machine learning in industry as classical NLP, deep learning
+  and time series, and implementing LLM agents and retrieval systems. </p>
+ 
+  <p>Since 2018 I have led projects end to end from scoping, hiring, modelling and
+  deployment, across different industries.</p>
+ 
+  <h2>Now</h2>
+  <p>I am currently working on two interesting projects: independent research on LLM agent
+  reliability and evaluation, and an Applied project on molecular detection in the
+  food chain.</p>
+</div>
+ 
+<script>
+  function toggleTheme() {
+    const r = document.documentElement;
+    r.setAttribute('data-theme',
+      r.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  }
+</script>
+ 
 </body>
 </html>
